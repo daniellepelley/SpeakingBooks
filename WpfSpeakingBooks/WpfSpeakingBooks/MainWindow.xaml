@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfSpeakingBooks.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            
+            
+            <TextBlock Grid.Row="0" Grid.Column="0">URL:</TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="urlText"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0">Book Name:</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="bookText"/>
+
+            </Grid>
+
+            <Button Content="As Audio" Click="Audio_Click"/>
+            <Button Content="As Pdf" Click="Pdf_Click"/>
+            <Button Content="As Html" Click="Html_Click"/>
+
+
+        </StackPanel>
+        
+
+    </Grid>
+</Window>
