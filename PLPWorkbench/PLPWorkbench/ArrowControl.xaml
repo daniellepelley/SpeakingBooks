@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="PLPWorkbench.ArrowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+
+        <Storyboard x:Key="Storyboard1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Arrow">
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value=".5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="0">
+
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleY)" Storyboard.TargetName="Arrow">
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value=".5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleX)" Storyboard.TargetName="Arrow">
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="-3"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="-3">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+        </Storyboard>
+</UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Canvas>
+        <Path 
+              x:Name="Arrow"
+              Data="F1M1568.35,1934.42L1551.46,1917.44 1551.46,1925.43C1517.67,1925.43 1515.02,1945.4 1515.02,1949.39 1522.31,1933.42 1551.46,1941.4 1551.46,1941.4L1551.46,1949.39 1568.35,1934.42z"
+              Stretch="Uniform"
+              Fill="Blue"
+              Width="250"
+              Height="250"
+              Margin="0,0,0,0"
+              RenderTransformOrigin="0.5,0.5">
+            
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <TransformGroup.Children>
+                        <RotateTransform Angle="0" />
+                        <ScaleTransform ScaleX="-.5" ScaleY=".5" />
+                    </TransformGroup.Children>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+    </Canvas>
+</UserControl>

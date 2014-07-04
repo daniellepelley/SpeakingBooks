@@ -1,0 +1,66 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="PLPWorkbench.HandControl"
+             >
+	<UserControl.Resources>
+
+		<Storyboard x:Key="Storyboard1">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Hand">
+				<EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value=".9"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3.7" Value=".9"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:4.5" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<QuarticEase EasingMode="EaseOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+            
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)" Storyboard.TargetName="Hand">
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<UserControl.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+		</EventTrigger>
+	</UserControl.Triggers>
+    
+        <ContentControl Grid.Row="0" Width="250" Height="250" Grid.Column="1" x:Name="Hand" HorizontalAlignment="Left" >
+            <ContentControl.Template>
+                <ControlTemplate>
+                    <Path  
+                    Width="250" Height="250"
+            Stroke="Transparent"
+            StrokeThickness="2"
+            Data="M12.98875,0C15.363612,0,17.288,1.9257107,17.288,4.2980785L17.288,21.023003 17.314272,20.930529C17.858577,19.18128 19.490978,17.909999 21.420799,17.909998 23.719223,17.909999 25.597271,19.717249 25.712404,21.987098L25.716774,22.159731 25.759718,22.07055C26.487466,20.730299 27.906713,19.82 29.53775,19.82 31.912668,19.82 33.837001,21.745923 33.837001,24.119551L33.837001,26.808578 33.858535,26.73275C34.372585,25.080049 35.914188,23.879999 37.736103,23.879998 39.978256,23.879999 41.796001,25.697827 41.796001,27.940062L41.796001,46.090036C41.796001,46.230177,41.788902,46.368658,41.775039,46.50514L41.774856,46.506582 41.777999,46.507868 41.773403,46.518021 41.749221,46.708324C41.615734,47.581923,41.203807,48.363903,40.606861,48.960857L40.413078,49.13698 40.150924,49.571711C38.844623,51.686367,37.499237,53.331999,37.499237,53.331999L37.499,64 11.706999,64 11.706999,53.331787 10.989743,52.747463C3.7189792,46.535681 0.88150987,35.182482 0.88151047,35.182482 -2.7773537,24.832287 6.1367765,23.563999 6.1367765,23.563998 4.3042971,28.484871 6.9962278,31.430073 8.6553913,32.6975L8.691999,32.724651 8.691999,4.2980785C8.691999,1.9257107,10.616487,0,12.98875,0z"
+            Stretch="Uniform"  Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+
+
+                        <Path.Fill>
+                            <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                                <GradientStop Color="Black" Offset="0"></GradientStop>
+                                <GradientStop Color="Silver" Offset="2"></GradientStop>
+                            </LinearGradientBrush>
+                        </Path.Fill>
+                    </Path>
+                </ControlTemplate>
+            </ContentControl.Template>
+
+            <ContentControl.Opacity>0</ContentControl.Opacity>
+            <ContentControl.RenderTransform>
+                <TransformGroup>
+                    <TransformGroup.Children>
+                        <RotateTransform x:Name="RotateTransform" Angle="10" />
+                        <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1.05" CenterY="0"/>
+                    </TransformGroup.Children>
+                </TransformGroup>
+            </ContentControl.RenderTransform>
+        </ContentControl>
+</UserControl>
